@@ -1,0 +1,298 @@
+/*
+# header
+*/
+
+#nav_main > ul > li:last-child {
+	float: left;
+}
+
+
+
+.siteSearch form{
+	float:left;
+}
+
+.siteSearch .advanced{
+	float:left;
+	margin-left: 10px;
+	line-height: 30px;
+    text-transform: uppercase;
+}
+
+
+
+
+/*
+# homepage
+*/
+
+.span-24 > .scroller ul li {
+		width: 150px;
+}
+
+.scrollerProduct .thumb{
+	height:140px;
+}
+
+.scrollerProduct  .thumb img {
+	max-height: 140px;
+	max-width: 140px;
+	width: auto;
+	height:auto;
+}
+
+
+.yCmsContentSlot.span-6.thumbnail_detail .simple_disp-img:first-child{
+	margin-bottom:10px;
+}
+
+.section1 .simple_disp-img{
+		margin: 0;
+}
+
+
+
+
+/*
+# category
+*/
+
+.productList .productListItem .thumb img {
+	width: 96px;
+}
+
+
+
+.productList .productListItem .stars,
+.productList .productListItem .details,
+.productList .productListItem .cart,
+.productList .productListItem .product-classification,
+.productList .productListItem .lowStock,
+.productList .productListItem .head {
+	margin-left:  110px;
+}
+
+
+.productList .productListItem .cart {
+	text-align: right;
+}
+
+
+
+/*
+# product
+*/
+
+
+.productImage .productImagePrimary a.productImagePrimaryLink img {
+		max-height: 420px;
+		max-width: 420px;
+		width: auto;
+		height:auto;
+}
+
+
+.productDescription .stock_message{
+	 display: inline;
+}
+
+
+
+
+
+/*
+	button color
+*/
+button.pickupInStoreButton,
+button.negative, a.button.negative {
+	color:#0068b3;
+	border-color: #0068b3;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+button.addToCartButton,
+#storeFinder .searchPane .findStoresNearMe,
+button.positive, a.button.positive{
+		background-color:#0068b3;
+		border-color: #0068b3;
+}
+
+/*button on hover*/
+button.pickupInStoreButton:hover,
+button.addToCartButton:hover,
+#storeFinder .searchPane .findStoresNearMe:hover,
+button.positive:hover, a.button.positive:hover{
+    color: #ffffff;
+    background-color: #5599c9;
+    border-color: #5599c9;
+}
+
+button.negative:hover, a.button.negative:hover{
+    opacity: 0.5;
+}
+
+
+button.checkoutButton {
+	font-size: 140%;
+	margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+#savedPaymentList .paymentEntry  {
+		min-height:188px;
+}
+
+
+#savedPaymentList .paymentList ul{
+	width:50%;
+}
+
+
+#savedPaymentList .paymentEntry button {
+		margin: 20px;
+}
+
+
+
+
+
+
+
+#savedAddressList  button{
+	margin-top:8px;
+}
+
+#savedAddressList  .addressEntry{
+	width:380px;
+}
+
+
+#savedAddressList  {
+	max-height:400px;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+
+
+
+
+.summaryOverlay fieldset.cardDate legend {
+	margin: 7px 0 5px;
+}
+
+
+
+td.priceRow{
+	text-align: right;
+}
+
+
+
+
+
+
+
+
+button.positive[disabled] {
+	text-transform: uppercase;
+}
+
+
+
+.footer .links{ 
+	float: left; 
+	margin: 0 0 10px 0;
+}
+
+.footer .links h3{/*re-skin*/
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+.footer .links ul.left_col{ 
+	float: left; 
+	width:210px;
+} 
+
+
+.footer .links ul.right_col{ 
+	float: right; 
+	width:210px;
+} 
+
+
+
+
+
+
+
+
+
+
+/* volume-prices */
+
+table.volume-prices thead th{
+	border-bottom: 1px solid #dddddd;
+    background-color: #3c3c3c;
+    color: #ffffff;
+	line-height:25px;
+}
+
+table.volume-prices tbody td{
+	border-bottom: 1px solid #dddddd;
+	line-height:20px;
+}
+
+table.volume-prices tbody tr:nth-child(2n-1) td{
+    background: rgba(255, 255, 255, 0.65);
+}
+
+
+
+.volumePricesFlag{
+	float:right;
+	padding:5px 0 0 10px;
+}
+
+
+
+
+
+
+.productDetailsPanel .productDescription .qty label{
+	width:67px;
+	display: block;
+	float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+#storeFinder .storeResultList .storeResultTable .storeMarker{
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#storeFinder .storeResultList .storeResultTable .storeImage{
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+
+#storeFinder .storeResultList .storeResultTable td a.button.right{
+	margin-top: 0;
+}
