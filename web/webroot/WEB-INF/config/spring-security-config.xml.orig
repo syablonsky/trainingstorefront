@@ -22,9 +22,110 @@
 		http://www.springframework.org/schema/aop
 		http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	
- 
-<security:http pattern="/_ui/**" security="none"/>
+	<security:http pattern="/_ui/**" security="none"/>
+
+	<!-- Security config for checkout - it has its own login page -->
+	<security:http disable-url-rewriting="true" pattern="/checkout/**">
+
+		<security:session-management session-authentication-strategy-ref="fixation" />
+
+		<!-- SSL / AUTHENTICATED pages -->
+		<security:intercept-url pattern="/checkout/j_spring_security_check" requires-channel="https"/>
+		<security:intercept-url pattern="/checkout*" access="ROLE_CUSTOMERGROUP" requires-channel="https"/>
+		<security:intercept-url pattern="/checkout/**" access="ROLE_CUSTOMERGROUP" requires-channel="https"/>
+
+		<security:form-login
+				login-processing-url="/checkout/j_spring_security_check"
+				login-page="/login/checkout"
+				authentication-failure-handler-ref="loginCheckoutAuthenticationFailureHandler"
+				authentication-success-handler-ref="loginCheckoutGuidAuthenticationSuccessHandler"/>
+
+		<security:logout logout-url="/logout" success-handler-ref="logoutSuccessHandler"/>
+
+		<security:port-mappings>
+			<security:port-mapping http="#{configurationService.configuration.getProperty('tomcat.http.port')}"
+								   https="#{configurationService.configuration.getProperty('tomcat.ssl.port')}"/>
+			<security:port-mapping http="80" https="443"/>
+			<!--security:port-mapping http="#{configurationService.configuration.getProperty('proxy.http.port')}"
+				https="#{configurationService.configuration.getProperty('proxy.ssl.port')}" /-->
+		</security:port-mappings>
+
+		<security:request-cache ref="httpSessionRequestCache"/>
+
+	</security:http>
+
+	<!-- Ignores url(s) that match paths specified in the set -->
+	<bean id="excludeUrlRequestMatcher"
+		  class="org.training.storefront.security.ExcludeUrlRequestMatcher">
+		<property name="excludeUrlSet" ref="excludeUrlSet"/>
+		<property name="pathMatcher" ref="defaultPathMatcher"/>
+	</bean>
+
+	<!-- The set of url(s) to exclude from the 'Default security config'-->
+	<bean id="excludeUrlSet" class="java.util.HashSet"/>
+
+	<!-- Path matcher to use, AntPathMatcher is the default -->
+	<alias name="antPathMatcher" alias="defaultPathMatcher"/>
+	<bean id="antPathMatcher" class="org.springframework.util.AntPathMatcher"/>
+
+	<!-- Default security config -->
+	<security:http disable-url-rewriting="true" request-matcher-ref="excludeUrlRequestMatcher">
+
+		<security:anonymous username="anonymous" granted-authority="ROLE_ANONYMOUS"/>
+
+		<security:session-management session-authentication-strategy-ref="fixation" />
+
+		<!-- SSL / AUTHENTICATED pages -->
+		<security:intercept-url pattern="/my-account*" access="ROLE_CUSTOMERGROUP" requires-channel="https"/>
+		<security:intercept-url pattern="/my-account/**" access="ROLE_CUSTOMERGROUP" requires-channel="https"/>
+
+		<!-- SSL / AUTHENTICATED pages Organization management pages-->
+		<security:intercept-url pattern="/my-company*" access="ROLE_B2BADMINGROUP" requires-channel="https"/>
+		<security:intercept-url pattern="/my-company/**" access="ROLE_B2BADMINGROUP" requires-channel="https"/>
+
+		<!-- SSL / ANONYMOUS pages Login pages need to be SSL, but occur before authentication -->
+		<security:intercept-url pattern="/login" requires-channel="https"/>
+		<security:intercept-url pattern="/login/**" requires-channel="https"/>
+		<security:intercept-url pattern="/j_spring_security_check" requires-channel="https"/>
+		<security:intercept-url pattern="/logout" requires-channel="https"/>
+
+		<!-- MiniCart and CartPopup can occur on either secure or insecure pages -->
+		<security:intercept-url pattern="/cart/rollover/*" requires-channel="any"/>
+		<security:intercept-url pattern="/cart/miniCart/*" requires-channel="any"/>
+
+		<security:intercept-url pattern="/search/autocompleteSecure/**" requires-channel="https"/>
+
+		<!-- Only allow logged in customers to see the ordering form page -->
+		<security:intercept-url pattern="/**/p/**/orderForm" access="ROLE_CUSTOMERGROUP"/>
+
+		<!-- OPEN / ANONYMOUS pages Run all other (public) pages openly. Note that while credentials are secure, the session id can be sniffed.
+			If this is a security concern, then this line should be re-considered -->
+		<security:intercept-url pattern="/**" requires-channel="any" method="POST"/>
+		<!-- Allow posts on either secure or insecure -->
+		<security:intercept-url pattern="/**" requires-channel="${storefront.security.default.required.channel}"/>
+		<!-- Everything else should be insecure -->
+
+		<security:form-login
+				login-page="/login"
+				authentication-failure-handler-ref="loginAuthenticationFailureHandler"
+				authentication-success-handler-ref="loginGuidAuthenticationSuccessHandler"/>
+
+
+		<security:logout logout-url="/logout" success-handler-ref="logoutSuccessHandler"/>
+
+		<security:port-mappings>
+			<security:port-mapping http="#{configurationService.configuration.getProperty('tomcat.http.port')}"
+								   https="#{configurationService.configuration.getProperty('tomcat.ssl.port')}"/>
+			<security:port-mapping http="80" https="443"/>
+			<!--security:port-mapping http="#{configurationService.configuration.getProperty('proxy.http.port')}"
+				https="#{configurationService.configuration.getProperty('proxy.ssl.port')}" /-->
+		</security:port-mappings>
+
+		<security:request-cache ref="httpSessionRequestCache"/>
+
+		<security:access-denied-handler ref="b2bAccessDeniedHandler"/>
+
+	</security:http>
 
 	<security:authentication-manager alias="authenticationManager">
 		<security:authentication-provider ref="acceleratorAuthenticationProvider"/>

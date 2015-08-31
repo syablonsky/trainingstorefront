@@ -30,7 +30,8 @@
 	<!-- Load additional configuration -->
 	<import resource="spring-filter-config.xml"/>
 	<import resource="btg-config.xml"/>
-	<import resource="spring-security-config.xml"/>
+	<import resource="securityContext.xml"/>
+	<!-- import resource="spring-security-config.xml"/-->
 	<import resource="spring-mvc-config.xml"/>
 	<import resource="classpath:/acceleratorcms/spring/web-spring-context.xml"/>
 	<import resource="spring-cms-config.xml"/>

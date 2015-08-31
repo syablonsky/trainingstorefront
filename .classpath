@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/platform"/>
+	<classpathentry exported="true" kind="src" path="/btg"/>
+	<classpathentry exported="true" kind="src" path="/trainingfacades"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/addon-captchaaddon-recaptcha4j-0.0.7.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/granule-1.0.9.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/json-taglib-0.4.1.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/jsoup-1.6.1.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/spring-security-taglibs-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/spring-webmvc-4.1.4.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="resources"/>
+	<classpathentry kind="src" output="eclipsebin/web/classes" path="web/src"/>
+	<classpathentry kind="src" output="eclipsebin/web/classes" path="web/testsrc"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="gensrc"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/esapi-2.0.1.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/opensaml-2.6.1.jar" sourcepath="C:/Users/serge/.m2/repository/org/opensaml/opensaml/2.6.1/opensaml-2.6.1-sources.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/openws-1.5.1.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/xmltooling-1.4.1.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/not-yet-commons-ssl-0.3.9.jar"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/spring-security-saml2-core-1.0.1.RELEASE.jar" sourcepath="C:/Users/serge/.m2/repository/org/springframework/security/extensions/spring-security-saml2-core/1.0.1.RELEASE/spring-security-saml2-core-1.0.1.RELEASE-sources.jar"/>
 	<classpathentry kind="output" path="eclipsebin/notused"/>
-
-	<classpathentry exported="false" kind="src" path="/platform" />
-	<classpathentry exported="true" kind="src" path="/btg" />
-	<classpathentry exported="true" kind="src" path="/trainingfacades" />
-	<classpathentry exported="false" kind="lib" path="web/webroot/WEB-INF/lib/addon-captchaaddon-recaptcha4j-0.0.7.jar" />
-	<classpathentry exported="false" kind="lib" path="web/webroot/WEB-INF/lib/granule-1.0.9.jar" />
-	<classpathentry exported="false" kind="lib" path="web/webroot/WEB-INF/lib/json-taglib-0.4.1.jar" />
-	<classpathentry exported="false" kind="lib" path="web/webroot/WEB-INF/lib/jsoup-1.6.1.jar" />
-	<classpathentry exported="false" kind="lib" path="web/webroot/WEB-INF/lib/jstl-api-1.2.jar" />
-	<classpathentry exported="false" kind="lib" path="web/webroot/WEB-INF/lib/jstl-impl-1.2.jar" />
-	<classpathentry exported="false" kind="lib" path="web/webroot/WEB-INF/lib/spring-security-taglibs-3.2.5.RELEASE.jar" />
-	<classpathentry exported="false" kind="lib" path="web/webroot/WEB-INF/lib/spring-webmvc-4.1.4.RELEASE.jar" />
-	<classpathentry exported="true" kind="lib" path="resources" />
-	<classpathentry exported="false" output="eclipsebin/web/classes" kind="src" path="web/src" />
-	<classpathentry exported="false" output="eclipsebin/web/classes" kind="src" path="web/testsrc" />
-	<classpathentry exported="true" output="eclipsebin/classes" kind="src" path="gensrc" />
-				
 </classpath>
-				
